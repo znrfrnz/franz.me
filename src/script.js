@@ -24,16 +24,11 @@ const content = document.querySelector('.content');
     });
 
     minButton.addEventListener('click', function() {
-      // if (drag.classList.contains('minimized')) {
-      //    drag.classList.remove('minimized');
-      //    content.style.display = 'block';
-      // } else {
-      //    drag.classList.add('minimized');
-      //    content.style.display = 'none';
-      // }
-      drag.classList.toggle('minimized');
-      minButton.classList.add('enlarge');
-    setTimeout(() => {
-      minButton.classList.remove('enlarge');
-    }, 50); // Match the duration of the animation
-  });
+      if (drag.classList.contains('minimized')) {
+         drag.classList.remove('minimized');
+         content.style.display = 'block';
+      } else {
+         drag.classList.add('minimized');
+         content.style.display = 'none';
+      }
+   });
