@@ -36,13 +36,13 @@ const contentIntro = document.querySelector('.contentIntro');
 //dangerBTN introTXT//
 const dangerBTN = document.getElementById('danger');
 const bsod = document.getElementById('bsod');
-const bsodMusic = document.getElementById('bsodmsc'); // Add this line
+const bsodMusic = document.getElementById('bsodmsc'); 
 
-// Show BSOD function with music
+// bsod
 function showBSOD() {
   bsod.style.display = 'flex';
   enterFullscreen(bsod);
-  bsodMusic.play(); // Play the music
+  bsodMusic.play(); // sfx
 }
 
 // Check local storage and show BSOD if needed
@@ -50,7 +50,7 @@ if (localStorage.getItem('bsodShown') === 'false') {
   showBSOD();
 }
 
-// Handle drag functionality for the danger button
+// danger drag
 dangerBTN.addEventListener('mousedown', function(e) {
   e.preventDefault();
   
@@ -71,23 +71,14 @@ dangerBTN.addEventListener('mousedown', function(e) {
   document.addEventListener('mouseup', onMouseUp);
 });
 
-// Handle BSOD display on button click
+// bsod function
 dangerBTN.addEventListener('click', function() {
   showBSOD();
   localStorage.setItem('bsodShown', 'true');
 });
 
-// Optional: Handle hiding BSOD and stopping music (if needed)
-bsod.addEventListener('click', function() {
-  bsod.style.display = 'none';
-  bsodMusic.pause(); // Pause the music
-  bsodMusic.currentTime = 0; // Reset the music to the start
-});
-
-
    // bsod.addEventListener('click', function() {
    // });
-
    function enterFullscreen(element) {
       if (element.requestFullscreen) {
          element.requestFullscreen();
@@ -102,11 +93,11 @@ bsod.addEventListener('click', function() {
 
 // About me // 
 const storyHdr = document.querySelector('.storyHdr');
-const storyTXT = document.getElementById('storyTXT'); // Correct selector
+const storyTXT = document.getElementById('storyTXT'); 
 const minButton2 = document.querySelector('.minButton2');
 const contentStory = document.querySelector('.contentStory');
 
-// Story draggable functionality
+// drag
 storyHdr.addEventListener('mousedown', function(e) {
   e.preventDefault();
   
@@ -127,7 +118,7 @@ storyHdr.addEventListener('mousedown', function(e) {
   document.addEventListener('mouseup', onMouseUp);
 });
 
-// Minimize functionality for storyTXT
+// minimize butn
 minButton2.addEventListener('click', function() {
   if (storyTXT.classList.contains('minimized')) {
     storyTXT.classList.remove('minimized');
