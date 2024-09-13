@@ -1,17 +1,17 @@
-const header = document.querySelector('.header');
-const drag = document.getElementById('drag');
+const introHeader = document.querySelector('.introHeader');
+const introTXT = document.getElementById('introTXT');
 const minButton = document.querySelector('.minButton');
-const content = document.querySelector('.content');
-// intro draggable and hide //
-    header.addEventListener('mousedown', function(e) {
+const contentIntro = document.querySelector('.contentIntro');
+// intro introTXTgable and hide //
+    introHeader.addEventListener('mousedown', function(e) {
       e.preventDefault();
       
-      const offsetX = e.clientX - drag.getBoundingClientRect().left;
-      const offsetY = e.clientY - drag.getBoundingClientRect().top;
+      const offsetX = e.clientX - introTXT.getBoundingClientRect().left;
+      const offsetY = e.clientY - introTXT.getBoundingClientRect().top;
 
       function onMouseMove(e) {
-        drag.style.left = `${e.clientX - offsetX}px`;
-        drag.style.top = `${e.clientY - offsetY}px`;
+        introTXT.style.left = `${e.clientX - offsetX}px`;
+        introTXT.style.top = `${e.clientY - offsetY}px`;
       }
 
       function onMouseUp() {
@@ -24,49 +24,66 @@ const content = document.querySelector('.content');
     });
 
     minButton.addEventListener('click', function() {
-      if (drag.classList.contains('minimized')) {
-         drag.classList.remove('minimized');
-         content.style.display = 'block';
+      if (introTXT.classList.contains('minimized')) {
+         introTXT.classList.remove('minimized');
+         contentIntro.style.display = 'block';
       } else {
-         drag.classList.add('minimized');
-         content.style.display = 'none';
+         introTXT.classList.add('minimized');
+         contentIntro.style.display = 'none';
       }
    });
 
-//dangerBTN drag//
+//dangerBTN introTXT//
 const dangerBTN = document.getElementById('danger');
 const bsod = document.getElementById('bsod');
+const bsodMusic = document.getElementById('bsodmsc'); // Add this line
 
-   if (localStorage.getItem('bsodShown') === 'false') {
-      bsod.style.display = 'flex';
-      enterFullscreen(bsod);
-   }
+// Show BSOD function with music
+function showBSOD() {
+  bsod.style.display = 'flex';
+  enterFullscreen(bsod);
+  bsodMusic.play(); // Play the music
+}
 
-   dangerBTN.addEventListener('mousedown', function(e) {
-      e.preventDefault();
-         
-      const offsetX = e.clientX - dangerBTN.getBoundingClientRect().left;
-      const offsetY = e.clientY - dangerBTN.getBoundingClientRect().top;
+// Check local storage and show BSOD if needed
+if (localStorage.getItem('bsodShown') === 'false') {
+  showBSOD();
+}
 
-      function onMouseMove(e) {
-        dangerBTN.style.left = `${e.clientX - offsetX}px`;
-        dangerBTN.style.top = `${e.clientY - offsetY}px`;
-      }
+// Handle drag functionality for the danger button
+dangerBTN.addEventListener('mousedown', function(e) {
+  e.preventDefault();
+  
+  const offsetX = e.clientX - dangerBTN.getBoundingClientRect().left;
+  const offsetY = e.clientY - dangerBTN.getBoundingClientRect().top;
 
-      function onMouseUp() {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-      }
+  function onMouseMove(e) {
+    dangerBTN.style.left = `${e.clientX - offsetX}px`;
+    dangerBTN.style.top = `${e.clientY - offsetY}px`;
+  }
 
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
-   });
-      
-   dangerBTN.addEventListener('click', function() {
-         bsod.style.display = 'flex';
-         localStorage.setItem('bsodShown', 'true');
-         enterFullscreen(bsod);
-   });
+  function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+// Handle BSOD display on button click
+dangerBTN.addEventListener('click', function() {
+  showBSOD();
+  localStorage.setItem('bsodShown', 'true');
+});
+
+// Optional: Handle hiding BSOD and stopping music (if needed)
+bsod.addEventListener('click', function() {
+  bsod.style.display = 'none';
+  bsodMusic.pause(); // Pause the music
+  bsodMusic.currentTime = 0; // Reset the music to the start
+});
+
 
    // bsod.addEventListener('click', function() {
    // });
@@ -82,3 +99,41 @@ const bsod = document.getElementById('bsod');
          element.msRequestFullscreen();
        }
      }
+
+// About me // 
+const storyHdr = document.querySelector('.storyHdr');
+const storyTXT = document.getElementById('storyTXT'); // Correct selector
+const minButton2 = document.querySelector('.minButton2');
+const contentStory = document.querySelector('.contentStory');
+
+// Story draggable functionality
+storyHdr.addEventListener('mousedown', function(e) {
+  e.preventDefault();
+  
+  const offsetX = e.clientX - storyTXT.getBoundingClientRect().left;
+  const offsetY = e.clientY - storyTXT.getBoundingClientRect().top;
+  
+  function onMouseMove(e) {
+    storyTXT.style.left = `${e.clientX - offsetX}px`;
+    storyTXT.style.top = `${e.clientY - offsetY}px`;
+  }
+
+  function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+// Minimize functionality for storyTXT
+minButton2.addEventListener('click', function() {
+  if (storyTXT.classList.contains('minimized')) {
+    storyTXT.classList.remove('minimized');
+    contentStory.style.display = 'block';
+  } else {
+    storyTXT.classList.add('minimized');
+    contentStory.style.display = 'none';
+  }
+});
