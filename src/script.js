@@ -92,21 +92,21 @@ dangerBTN.addEventListener('click', function() {
      }
 
 // About me // 
-const storyHdr = document.querySelector('.storyHdr');
-const storyTXT = document.getElementById('storyTXT'); 
+const abtHdr = document.querySelector('.abtHdr');
+const abtTXT = document.getElementById('abtTXT'); 
 const minButton2 = document.querySelector('.minButton2');
-const contentStory = document.querySelector('.contentStory');
+const contentAbt = document.querySelector('.contentAbt');
 
 // drag
-storyHdr.addEventListener('mousedown', function(e) {
+abtHdr.addEventListener('mousedown', function(e) {
   e.preventDefault();
   
-  const offsetX = e.clientX - storyTXT.getBoundingClientRect().left;
-  const offsetY = e.clientY - storyTXT.getBoundingClientRect().top;
+  const offsetX = e.clientX - abtTXT.getBoundingClientRect().left;
+  const offsetY = e.clientY - abtTXT.getBoundingClientRect().top;
   
   function onMouseMove(e) {
-    storyTXT.style.left = `${e.clientX - offsetX}px`;
-    storyTXT.style.top = `${e.clientY - offsetY}px`;
+    abtTXT.style.left = `${e.clientX - offsetX}px`;
+    abtTXT.style.top = `${e.clientY - offsetY}px`;
   }
 
   function onMouseUp() {
@@ -120,11 +120,11 @@ storyHdr.addEventListener('mousedown', function(e) {
 
 // minimize butn
 minButton2.addEventListener('click', function() {
-  if (storyTXT.classList.contains('minimized')) {
-    storyTXT.classList.remove('minimized');
-    contentStory.style.display = 'block';
+  if (abtTXT.classList.contains('minimized')) {
+    abtTXT.classList.remove('minimized');
+    contentAbt.style.display = 'block';
   } else {
-    storyTXT.classList.add('minimized');
-    contentStory.style.display = 'none';
+    abtTXT.classList.add('minimized');
+    contentAbt.style.display = 'none';
   }
 });
