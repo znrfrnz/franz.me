@@ -155,7 +155,12 @@ const FloatingIDCard = () => {
   };
 
   return (
-    <div ref={cardRef} style={styles.card} onMouseDown={handleMouseDown}>
+    <div
+      ref={cardRef}
+      style={styles.card}
+      onMouseDown={handleMouseDown}
+      className="floating-id-card"
+    >
       <div style={styles.sidebar}>ACCESS</div>
       <div style={styles.content}>
         <div style={styles.hole}></div>

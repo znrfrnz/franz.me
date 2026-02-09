@@ -46,14 +46,6 @@ function App() {
         </DraggableWindow>
       </div>
 
-      <div className="widgets-container">
-        <DangerButton className="danger" onClick={handleDangerClick}>
-          Do not click me!
-        </DangerButton>
-
-        <FidgetToy className="fidget">Click me!</FidgetToy>
-      </div>
-
       <BSOD ref={bsodRef} isVisible={bsodVisible} />
 
       <div className="container mt-5">
@@ -125,6 +117,13 @@ function App() {
           </DraggableWindow>
         </div>
       )}
+      <div className="widgets-container">
+        <DangerButton className="danger" onClick={handleDangerClick}>
+          Do not click me!
+        </DangerButton>
+
+        <FidgetToy className="fidget">Click me!</FidgetToy>
+      </div>
     </>
   );
 }
