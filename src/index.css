@@ -396,8 +396,7 @@ body {
     /* Stack all windows vertically */
     .introTXT,
     .abtTXT,
-    .projectsTXT,
-    .floating-id-card {
+    .projectsTXT {
         position: relative !important;
         left: auto !important;
         top: auto !important;
@@ -406,6 +405,17 @@ body {
         margin: 20px auto !important;
         transform: none !important;
         display: block !important;
+    }
+
+    .floating-id-card {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 20px auto !important;
+        transform: none !important;
+        display: flex !important;
     }
 
     /* Widgets Container */
@@ -490,9 +500,9 @@ body {
         left: 50% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        transform: translateX(-50%) scale(0.85) !important;
+        transform: translateX(-50%) scale(0.75) !important;
         transform-origin: top center !important;
         margin-top: 20px !important;
-        margin-bottom: -30px !important;
+        margin-bottom: -50px !important;
     }
 }
